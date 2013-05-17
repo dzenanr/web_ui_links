@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+
+<html>
+  <body>
+    <element name="web-links" extends="div">
+      <template>
+        <form>
+          <label for="name">Name</label>
+          <input id="name" type="text" required/>
+          <label for="url">Web Link</label>
+          <input id="url" type="url" required pattern="https?://.+"/>
+          <br/>
+          <button on-click="add()" class="button">Add</button>
+          <button on-click="remove()" class="button">Remove</button>
+          <label id="message"></label>
+        </form>
+        <ul class="link">
+          <template iterate="webLink in webLinks.toList()">
+            <li>
+              <a href="{{ webLink.url.toString() }}">
+                {{ webLink.name }}
+              </a>
+            </li>
+          </template>
+        </ul>
+      </template>
+
+      <script type="application/dart" src="links.dart"></script>
+    </element>
+  </body>
+</html>
