@@ -1,5 +1,7 @@
 #webui links
 
+https://groups.google.com/a/dartlang.org/forum/?fromgroups#!forum/web-ui
+
 http://www.dartlang.org/docs/tutorials/
 http://www.dartlang.org/articles/web-ui/
 http://www.dartlang.org/articles/web-ui/summary.html
