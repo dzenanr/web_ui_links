@@ -1,4 +1,4 @@
-library web_links;
+library links;
 
 import 'dart:uri';
 

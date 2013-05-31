@@ -10,10 +10,8 @@
   <body>
     <h1>Web Links</h1>
 
-    <ul>
-      <template iterate="link in links.toList()">
-        <web-link web-link="{{ link }}"></web-link>
-      </template>
+    <ul template repeat="link in links.toList()">
+      <web-link web-link="{{ link }}"></web-link>
     </ul>
 
     <script type="application/dart" src="links.dart"></script>

@@ -1,4 +1,4 @@
-library web_links;
+library links;
 
 import 'dart:uri';
 
@@ -32,7 +32,7 @@ class Link {
     if (name != null && link.name != null) {
       return name.compareTo(link.name);
     } else {
-      throw new Error('a link name must be present');
+      throw new Exception('a link name must be present');
     }
   }
 
@@ -66,7 +66,7 @@ class Links {
 
   bool add(Link newLink) {
     if (newLink == null) {
-      throw new Error('a new link must be present');
+      throw new Exception('a new link must be present');
     }
     for (Link link in this) {
       if (newLink.name == link.name) return false;
@@ -85,7 +85,7 @@ class Links {
 
   fromJson(List<Map<String, Object>> linkList) {
     if (_links.length > 0) {
-      throw new Error('links are not empty');
+      throw new Exception('links are not empty');
     }
     for (Map<String, Object> linkMap in linkList) {
       Link link = new Link.fromJson(linkMap);

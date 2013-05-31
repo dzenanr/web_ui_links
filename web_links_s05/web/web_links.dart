@@ -1,7 +1,7 @@
 import 'dart:html';
 import 'dart:json';
 
-import 'package:web_links/web_links.dart';
+import 'package:web_links/links.dart';
 
 /**
  * Learn about the Web UI package by visiting

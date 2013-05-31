@@ -5,15 +5,16 @@
     <meta charset="utf-8">
     <title>Web Links</title>
     <link rel="stylesheet" href="css/page.css"/>
-    <link rel="import" href="link.html">
   </head>
   <body>
     <h1>Web Links</h1>
 
-    <ul>
-      <template iterate="link in links.toList()">
-        <web-link web-link="{{ link }}"></web-link>
-      </template>
+    <ul template repeat="link in links.toList()">
+      <li>
+        <a href="{{ link.url.toString() }}">
+          {{ link.name }}
+        </a>
+      </li>
     </ul>
 
     <script type="application/dart" src="links.dart"></script>

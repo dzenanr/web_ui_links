@@ -1,4 +1,4 @@
-import 'package:web_links/web_links.dart';
+import 'package:web_links/links.dart';
 
 var links = new Links();
 
