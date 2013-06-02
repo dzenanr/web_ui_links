@@ -8,14 +8,14 @@
           <label for="name">Name</label>
           <input id="name" type="text" required/>
           <label for="url">Web Link</label>
-          <input id="url" type="url" required pattern="https?://.+"/>
+          <input id="url" type="url" title="http://www.example.com" required pattern="https?://.+"/>
           <br/>
-          <button on-click="add()" class="button">Add</button>
-          <button on-click="remove()" class="button">Remove</button>
+          <input type="submit" value="Add" on-click="add()" class="button"/>
+          <input type="submit" value="Remove" on-click="remove()" class="button"/>
           <label id="message"></label>
         </form>
         <ul class="link">
-          <template repeat="webLink in webLinks.toList()">
+          <template repeat="webLink in webLinks.observableList">
             <li>
               <a href="{{ webLink.url.toString() }}">
                 {{ webLink.name }}

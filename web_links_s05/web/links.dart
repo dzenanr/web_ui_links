@@ -6,7 +6,7 @@ import 'package:web_ui/web_ui.dart';
 import 'package:web_links/links.dart';
 
 class WebLinks extends WebComponent {
-  Links webLinks = Links.one;
+  List<Link> webLinks = Model.one.links;
 
   add() {
     InputElement name = query("#name");
@@ -24,18 +24,13 @@ class WebLinks extends WebComponent {
     }
     if (!error) {
       var webLink = new Link(name.value, url.value);
-      if (webLinks.add(webLink)) {
-        webLinks.order();
-        save();
-      } else {
-        message.text = 'web link with that name already exists';
-        error = true;
-      }
+      webLinks.add(webLink);
+      save();
     }
   }
 
   save() {
     window.localStorage['web_links'] =
-        stringify(webLinks.toJson());
+        stringify(Model.one.toJson());
   }
 }

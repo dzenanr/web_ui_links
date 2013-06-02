@@ -1,13 +1,13 @@
 import 'package:web_links/links.dart';
+import 'package:web_ui/web_ui.dart';
 
-Links links;
+final links = toObservable(new List<Link>());
 
 /**
  * Learn about the Web UI package by visiting
  * http://www.dartlang.org/articles/web-ui/ .
  */
 void main() {
-  links = new Links();
   // create several links
   var link1 = new Link('On Dart', 'http://ondart.me/');
   var link2 = new Link('Web UI', 'http://www.dartlang.org/articles/web-ui/');

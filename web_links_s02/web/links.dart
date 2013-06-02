@@ -1,6 +1,6 @@
 import 'package:web_links/links.dart';
 
-var links = new Links();
+var links = new List<Link>();
 
 /**
  * Learn about the Web UI package by visiting

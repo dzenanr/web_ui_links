@@ -35,34 +35,15 @@ class Link {
       throw new Exception('a link name must be present');
     }
   }
-
 }
 
 class Links {
-  var _links = new List<Link>();
+  final _list = new List<Link>();
 
-  // singleton design pattern: http://en.wikipedia.org/wiki/Singleton_pattern
-  Links.private();
-  static Links singleton = null;
-  static Links get one {
-    if (singleton == null) {
-      singleton = new Links.private();
-    }
-    return singleton;
-  }
-
-  init() {
-    var link1 = new Link('On Dart', 'http://ondart.me/');
-    var link2 = new Link('Web UI', 'http://www.dartlang.org/articles/web-ui/');
-    var link3 = new Link('Books To Read', 'http://www.goodreads.com/');
-    singleton.add(link1);
-    singleton.add(link2);
-    singleton.add(link3);
-  }
-
-  Iterator<Link> get iterator => _links.iterator;
-
-  List<Link> toList() => _links.toList();
+  Iterator<Link> get iterator => _list.iterator;
+  bool get isEmpty => _list.isEmpty;
+  
+  List<Link> get observableList => _list;
 
   bool add(Link newLink) {
     if (newLink == null) {
@@ -71,42 +52,65 @@ class Links {
     for (Link link in this) {
       if (newLink.name == link.name) return false;
     }
-    _links.add(newLink);
+    _list.add(newLink);
     return true;
   }
 
   Link find(String name) {
-    for (Link link in _links) {
+    for (Link link in _list) {
       if (link.name == name) return link;
     }
     return null;
   }
 
   bool remove(Link link) {
-    return _links.remove(link);
+    return _list.remove(link);
   }
 
+  order() {
+    _list.sort((m,n) => m.compareTo(n));
+  }
+
+}
+
+class Model {
+  var links = new Links();
+
+  // singleton design pattern: http://en.wikipedia.org/wiki/Singleton_pattern
+  static Model model;
+  Model.private();
+  static Model get one {
+    if (model == null) {
+      model = new Model.private();
+    }
+    return model;
+  }
+  // singleton
+  
+  init() {
+    var link1 = new Link('On Dart', 'http://ondart.me/');
+    var link2 = new Link('Web UI', 'http://www.dartlang.org/articles/web-ui/');
+    var link3 = new Link('Books To Read', 'http://www.goodreads.com/');
+    Model.one.links.add(link1);
+    Model.one.links.add(link2);
+    Model.one.links.add(link3);
+  }
+  
   List<Map<String, Object>> toJson() {
     var linkList = new List<Map<String, Object>>();
-    for (Link link in _links) {
+    for (Link link in links) {
       linkList.add(link.toJson());
     }
     return linkList;
   }
 
   fromJson(List<Map<String, Object>> linkList) {
-    if (_links.length > 0) {
+    if (!links.isEmpty) {
       throw new Exception('links are not empty');
     }
     for (Map<String, Object> linkMap in linkList) {
       Link link = new Link.fromJson(linkMap);
-      add(link);
+      links.add(link);
     }
   }
-
-  order() {
-    // in place sort
-    _links.sort((m,n) => m.compareTo(n));
-  }
-
 }

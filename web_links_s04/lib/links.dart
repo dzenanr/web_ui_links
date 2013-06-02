@@ -11,12 +11,3 @@ class Link {
   }
 }
 
-class Links {
-  var _links = new List<Link>();
-
-  add(Link link) {
-    _links.add(link);
-  }
-
-  List<Link> toList() => _links.toList();
-}
