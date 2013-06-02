@@ -38,12 +38,13 @@ class Link {
 }
 
 class Links {
-  final _list = new List<Link>();
+  var _list = new List<Link>();
 
   Iterator<Link> get iterator => _list.iterator;
   bool get isEmpty => _list.isEmpty;
   
-  List<Link> get observableList => _list;
+  List<Link> get internalList => _list;
+  set internalList(List<Link> observableList) => _list = observableList;
 
   bool add(Link newLink) {
     if (newLink == null) {

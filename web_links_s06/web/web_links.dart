@@ -9,6 +9,9 @@ import 'package:web_ui/web_ui.dart';
  * http://www.dartlang.org/articles/web-ui/ .
  */
 
+@observable
+String s = '';
+
 load() {
   String json = window.localStorage['web_links'];
   if (json == null) {
@@ -19,6 +22,7 @@ load() {
 }
 
 main() {
-  toObservable(Model.one.links.observableList);
+  toObservable(Model.one.links.internalList);
+  //Model.one.links.internalList = toObservable(Model.one.links.internalList);
   load();
 }

@@ -15,7 +15,7 @@
           <label id="message"></label>
         </form>
         <ul class="link">
-          <template repeat="webLink in webLinks.observableList">
+          <template repeat="webLink in webLinks.internalList">
             <li>
               <a href="{{ webLink.url.toString() }}">
                 {{ webLink.name }}
