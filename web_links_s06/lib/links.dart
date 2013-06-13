@@ -1,18 +1,16 @@
 library links;
 
-import 'dart:uri';
-
 class Link {
   String name;
   Uri url;
 
   Link(this.name, String link) {
-    url = new Uri(link);
+    url = Uri.parse(link);
   }
 
   Link.fromJson(Map<String, Object> linkMap) {
     name = linkMap['name'];
-    url = new Uri(linkMap['url']);
+    url = Uri.parse(linkMap['url']);
   }
 
   Map<String, Object> toJson() {
@@ -42,7 +40,7 @@ class Links {
 
   Iterator<Link> get iterator => _list.iterator;
   bool get isEmpty => _list.isEmpty;
-  
+
   List<Link> get internalList => _list;
   set internalList(List<Link> observableList) => _list = observableList;
 
@@ -87,16 +85,16 @@ class Model {
     return model;
   }
   // singleton
-  
+
   init() {
     var link1 = new Link('On Dart', 'http://ondart.me/');
     var link2 = new Link('Web UI', 'http://www.dartlang.org/articles/web-ui/');
-    var link3 = new Link('Books To Read', 'http://www.goodreads.com/');
+    var link3 = new Link('.parseBooks To Read', 'http://www.goodreads.com/');
     Model.one.links.add(link1);
     Model.one.links.add(link2);
     Model.one.links.add(link3);
   }
-  
+
   List<Map<String, Object>> toJson() {
     var linkList = new List<Map<String, Object>>();
     for (Link link in links) {

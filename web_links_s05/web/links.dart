@@ -1,6 +1,5 @@
 import 'dart:html';
 import 'dart:json';
-import 'dart:uri';
 
 import 'package:web_ui/web_ui.dart';
 import 'package:web_links/links.dart';
@@ -30,7 +29,6 @@ class WebLinks extends WebComponent {
   }
 
   save() {
-    window.localStorage['web_links'] =
-        stringify(Model.one.toJson());
+    window.localStorage['web_links'] = stringify(Model.one.toJson());
   }
 }

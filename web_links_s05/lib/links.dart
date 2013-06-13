@@ -1,18 +1,16 @@
 library links;
 
-import 'dart:uri';
-
 class Link {
   String name;
   Uri url;
 
   Link(this.name, String link) {
-    url = new Uri(link);
+    url = Uri.parse(link);
   }
 
   Link.fromJson(Map<String, Object> linkMap) {
     name = linkMap['name'];
-    url = new Uri(linkMap['url']);
+    url = Uri.parse(linkMap['url']);
   }
 
   Map<String, Object> toJson() {
@@ -36,7 +34,7 @@ class Model {
     return model;
   }
   // singleton
-  
+
   init() {
     var link1 = new Link('On Dart', 'http://ondart.me/');
     var link2 = new Link('Web UI', 'http://www.dartlang.org/articles/web-ui/');
@@ -45,7 +43,7 @@ class Model {
     Model.one.links.add(link2);
     Model.one.links.add(link3);
   }
-  
+
   List<Map<String, Object>> toJson() {
     var linkList = new List<Map<String, Object>>();
     for (Link link in links) {
