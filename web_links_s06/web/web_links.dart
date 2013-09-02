@@ -1,5 +1,5 @@
 import 'dart:html';
-import 'dart:json';
+import 'dart:convert';
 
 import 'package:web_links/links.dart';
 import 'package:web_ui/web_ui.dart';
@@ -17,7 +17,7 @@ load() {
   if (json == null) {
     Model.one.init();
   } else {
-    Model.one.fromJson(parse(json));
+    Model.one.fromJson(JSON.decode(json));
   }
 }
 
